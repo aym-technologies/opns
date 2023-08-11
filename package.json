@@ -10,7 +10,7 @@
     "clean": "rimraf scrypt.index.json && rimraf dist && rimraf artifacts",
     "compile": "npx scrypt-cli compile",
     "pretest": "npm run build && npm run compile",
-    "test": "mocha",
+    "test": "mocha --timeout 60000",
     "testnet": "mocha --config=.mocharc-testnet.json",
     "genprivkey": "npx ts-node tests/utils/privateKey.ts",
     "lint": "eslint . --ext .js,.ts --fix && prettier --write --ignore-unknown \"**/*\"",

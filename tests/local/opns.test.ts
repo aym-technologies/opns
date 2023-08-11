@@ -22,7 +22,7 @@ let deployTx: TransactionResponse
 describe('Test SmartContract `OpNS`', () => {
     before(async () => {
         await OpNS.compile()
-        opNS = new OpNS(toByteString('alpha', true), 16n)
+        opNS = new OpNS(toByteString('alpha', true), 18n)
         opNS.bindTxBuilder('mint', OpNS.mintTxBuilder)
         await opNS.connect(getDummySigner([priv]))
         deployTx = await opNS.deploy(1)
@@ -34,10 +34,10 @@ describe('Test SmartContract `OpNS`', () => {
         let nonce: ByteString
         let counter = 0
         while (true) {
-            nonce = toByteString(randomBytes(4).toString('hex'))
+            nonce = toByteString(randomBytes(8).toString('hex'))
             counter++
             try {
-                console.log(opNS.validatePOW(char, nonce))
+                console.log(opNS.validatePOW(char, nonce), nonce)
                 break
             } catch (e) {}
         }
@@ -63,10 +63,10 @@ describe('Test SmartContract `OpNS`', () => {
         let nonce: ByteString
         let counter = 0
         while (true) {
-            nonce = toByteString(randomBytes(4).toString('hex'))
+            nonce = toByteString(randomBytes(8).toString('hex'))
             counter++
             try {
-                console.log(opNS.validatePOW(char, nonce))
+                console.log(opNS.validatePOW(char, nonce), nonce)
             } catch (e) {
                 break
             }
