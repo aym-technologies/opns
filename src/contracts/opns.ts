@@ -111,8 +111,10 @@ export class OpNS extends SmartContract {
         }
         return (
             lock +
-            // OP_FALSE OP_IF OP_DATA3 "ord" OP_1 OP_DATA10 "text/op-ns" OP_0
-            toByteString('0063036f7264510a746578742f6f702d6e7300') +
+            // OP_FALSE OP_IF OP_DATA3 "ord" OP_1 OP_DATA17 "application/op-ns" OP_0
+            toByteString(
+                '0063036f726451116170706c69636174696f6e2f6f702d6e7300'
+            ) +
             int2ByteString(len(domain)) +
             domain +
             OpCode.OP_ENDIF +
